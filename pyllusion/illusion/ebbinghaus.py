@@ -164,10 +164,10 @@ def ebbinghaus_parameters(illusion_strength=0, difference=0, size_min=0.25, dist
     ----------
     illusion_strength : float
         The strength of the surrounding context, i.e. outer circles, in biasing perception of unequally sized inner circles.
-        Specifically, the size of right outer circles relative to the left (in percentage, e.g, if ``difference=1``,
+        Specifically, the size of right outer circles relative to the left (in percentage, e.g, if ``illusion_strength=1``,
         it means that the right outer circles will be 100% bigger, i.e., 2 times bigger than the left
         outer circles). A negative sign reflects the size difference of the left outer circles relative
-        to the right, i.e., ``difference=-1`` means the left outer circles will be 100% bigger than the
+        to the right, i.e., ``illusion_strength=-1`` means the left outer circles will be 100% bigger than the
         right outer circles.
     difference : float
         The objective size difference of the inner circles.
