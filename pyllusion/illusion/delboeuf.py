@@ -135,10 +135,10 @@ def delboeuf_parameters(
     ----------
     illusion_strength : float
         The strength of the surrounding context, i.e. outer circles, in biasing perception of unequally sized inner circles.
-        Specifically, the size of left outer circle relative to its inner circle (in percentage, e.g, if ``illusion_strength=1``,
+        Specifically, the size of left outer circle relative to its inner circle (in percentage, e.g, if ``difference=1``,
         it means that the left outer circle will be 100% bigger, i.e., 2 times bigger than the left
         inner circle). A negative sign reflects the size difference of the right circles, i.e.,
-        i.e., ``illusion_strength=-1`` means the right outer circle will be 100% bigger than the inner right circle.
+        i.e., ``difference=-1`` means the right outer circle will be 100% bigger than the inner right circle.
     difference : float
         The objective size difference of the inner circles.
         Specifically, the size of left inner circle relative to the right inner circle (in percentage, e.g., if ``difference=1``,
