@@ -18,7 +18,8 @@ class Delboeuf():
                  distance_auto = False,
                  distance_centers= None,
                  inner_sizes = [],
-                 both_sizes = False):
+                 both_sizes = False,
+                 targetCol = "red"):
         """
         Parameters
         ----------
@@ -61,9 +62,11 @@ class Delboeuf():
         self.name = name
         self.strength = strength
         self.type = "Congruent" if strength > 0 else "Incongruent"
-        self.distance_centers = distance_centers
         self.inner_sizes = inner_sizes
         self.difference = difference
+        self.targetCol = targetCol
+        self.distance = distance
+        print(self.distance)
 
         size_bigger = np.sqrt(1 + np.abs(difference)) * size_min
 
@@ -165,7 +168,7 @@ class Delboeuf():
                 self.image = image_circle(image=self.image,
                              x=pos, y=0,
                              size=self.inner_sizes[i],
-                             color="red")
+                             color=self.targetCol)
 
             if outpath:
                 self.image.save(outpath)
@@ -179,9 +182,54 @@ class Delboeuf():
 
                 # Draw inner circle
                 self.image = psychopy_circle(window, x=pos, y=0, size=self.inner_sizes[i],
-                                color="red", outline_color="red", outline=0.5)
+                                color=self.targetCol, outline_color="red", outline=0.5)
 
         else:
             raise TypeError(
                 method,  " is not a method. Use 'psychopy' or 'image'",
             )
+
+    def setStrength(self, strength):
+        """ Update the strength of the illusion
+             Input
+             ----------
+             strength : int
+                The new strength of the illusion"""
+        self.strength = strength
+        # reinitialize the object
+        self.__init__()
+
+    def setDifference(self, difference):
+        """ NOTE: not working as expected??
+        Update the difference of the illusion
+             Input
+             ----------
+             difference : float
+                The new difference param of the illusion"""
+        self.difference = difference
+        # reinitialize the object
+        self.__init__(difference = difference)
+
+    def setTargetCol(self, color):
+        """ Update the color of the targets
+             Input
+             ----------
+             color : str
+                The new target color"""
+        self.targetCol = color
+
+    def setDistance(self, distance):
+        """ Update the distance between the targets
+             Input
+             ----------
+              distance : float
+                 New distance between circles.
+             Example
+             ----------
+             myDebeouf.setDistance(2)
+             
+             """
+        self.distance = distance
+        # reinitialize the object
+        self.__init__(distance = distance)
+
